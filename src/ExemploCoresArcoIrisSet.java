@@ -34,7 +34,11 @@ public class ExemploCoresArcoIrisSet {
 
         System.out.println("Exiba as cores na ordem inversa da que foi informada: ");
 
-        List<String> listaDoSetArcoIris = new ArrayList<>(coresArcoIris);
+        List<String> listaDoSetArcoIris = new ArrayList<>(stringTreeSet);
+
+        Collections.reverse(listaDoSetArcoIris);
+
+        System.out.println(listaDoSetArcoIris);
 
         System.out.println("Exiba todas as cores que começam com a letra V: ");
 
@@ -46,12 +50,15 @@ public class ExemploCoresArcoIrisSet {
         }
 
         System.out.println("Remova todas as cores que não começam com a letra V: ");
-//        for (String corArcoIris :
-//                coresArcoIris) {
-//            if (!corArcoIris.startsWith("v")) {
-//                coresArcoIris.remove(corArcoIris)
-//            }
-//        }
+        Iterator<String> iterator = coresArcoIris.iterator();
+
+        while (iterator.hasNext()){
+            String next = iterator.next();
+            if(!next.startsWith("v")){
+                iterator.remove();
+            }
+        }
+        System.out.println();
 
         System.out.println("Limpe o conjunto: ");
         coresArcoIris.clear();
@@ -61,6 +68,7 @@ public class ExemploCoresArcoIrisSet {
         System.out.println("Confira se o conjunto está vazio: " + coresArcoIris.isEmpty());
     }
 }
+
 class ComparatorCorArcoIris implements Comparator<String> {
 
     @Override
